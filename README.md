@@ -13,15 +13,15 @@ This repository contains a MapReduce program written in Python for analyzing fli
 
 3. Upload the flight data CSV file (`flight.csv`) to the Hadoop file system:
     ```bash
-    hadoop fs -put flights.csv /input/flights.csv
+    hadoop fs -put flight.csv /input/flights.csv
     ```
 
 4. Execute the MapReduce program using Hadoop Streaming:
     ```bash
     hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar \
-        -file flight.py -mapper "python3 flight.py mapper" \
-        -reducer "python3 flight.py reducer" \
-        -input /input/flights.csv -output /output
+    -file mapreduceAnalysis.py -mapper "python3 mapreduceAnalysis.py mapper" \
+    -reducer "python3 mapreduceAnalysis.py reducer" \
+    -input /input/flights.csv -output /output
     ```
 
 5. View the output by displaying the contents of the result file:
